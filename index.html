@@ -1,67 +1,125 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Radio Österreich</title>
-<meta name="description" content="One tap to Austrian live radio. Radio Niederösterreich, Ö3, FM4 and all ORF stations.">
-<meta name="theme-color" content="#0d1b2a">
-<link rel="manifest" href="manifest.webmanifest">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1b2a'/%3E%3Cg fill='%23778da9'%3E%3Crect x='6' y='13' width='3.4' height='7' rx='1.7'/%3E%3Crect x='11.6' y='10' width='3.4' height='13' rx='1.7'/%3E%3Crect x='17.2' y='6' width='3.4' height='21' rx='1.7'/%3E%3Crect x='22.8' y='12' width='3.4' height='9' rx='1.7'/%3E%3C/g%3E%3C/svg%3E">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Radio">
-<link rel="stylesheet" href="app.css">
-</head>
-<body>
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
+        <title>Radio Österreich</title>
+        <meta
+            name="description"
+            content="One tap to Austrian live radio. Radio Niederösterreich, Ö3, FM4 and all ORF stations."
+        />
+        <meta name="theme-color" content="#0d1b2a" />
+        <link rel="manifest" href="manifest.webmanifest" />
+        <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+        <link
+            rel="icon"
+            href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d1b2a'/%3E%3Cg fill='%23778da9'%3E%3Crect x='6' y='13' width='3.4' height='7' rx='1.7'/%3E%3Crect x='11.6' y='10' width='3.4' height='13' rx='1.7'/%3E%3Crect x='17.2' y='6' width='3.4' height='21' rx='1.7'/%3E%3Crect x='22.8' y='12' width='3.4' height='9' rx='1.7'/%3E%3C/g%3E%3C/svg%3E"
+        />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta
+            name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent"
+        />
+        <meta name="apple-mobile-web-app-title" content="Radio" />
+        <link rel="stylesheet" href="app.css" />
+    </head>
+    <body>
+        <main class="app">
+            <!-- now playing -->
+            <section class="player" aria-label="Player">
+                <div class="np">
+                    <span class="mono big" id="npMono">NÖ</span>
+                    <div class="np-meta">
+                        <div class="np-line">
+                            <span class="live" id="liveBadge" hidden
+                                ><span class="dot"></span>Live</span
+                            >
+                            <span class="np-show" id="npShow"
+                                >Tap play to listen</span
+                            >
+                        </div>
+                        <h1 id="npName">Radio Niederösterreich</h1>
+                    </div>
+                    <div class="eq" aria-hidden="true">
+                        <i></i><i></i><i></i><i></i>
+                    </div>
+                </div>
 
-<main class="app">
-  <!-- now playing -->
-  <section class="player" aria-label="Player">
-    <div class="np">
-      <span class="mono big" id="npMono">NÖ</span>
-      <div class="np-meta">
-        <div class="np-line">
-          <span class="live" id="liveBadge" hidden><span class="dot"></span>Live</span>
-          <span class="np-show" id="npShow">Tap play to listen</span>
+                <div class="controls">
+                    <button
+                        class="icon-btn"
+                        id="prevBtn"
+                        aria-label="Previous station"
+                    >
+                        <svg viewBox="0 0 24 24">
+                            <path d="M18 6 9 12l9 6V6Z" />
+                            <path d="M6 6v12" />
+                        </svg>
+                    </button>
+                    <button class="play" id="playBtn" aria-label="Play">
+                        <svg class="i-play" viewBox="0 0 24 24">
+                            <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+                        </svg>
+                        <svg class="i-pause" viewBox="0 0 24 24">
+                            <path d="M8 5v14M16 5v14" />
+                        </svg>
+                        <svg class="i-spin" viewBox="0 0 24 24">
+                            <path d="M12 3a9 9 0 1 0 9 9" />
+                        </svg>
+                    </button>
+                    <button
+                        class="icon-btn"
+                        id="nextBtn"
+                        aria-label="Next station"
+                    >
+                        <svg viewBox="0 0 24 24">
+                            <path d="m6 6 9 6-9 6V6Z" />
+                            <path d="M18 6v12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="vol-row">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+                        <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                    </svg>
+                    <input
+                        type="range"
+                        id="vol"
+                        min="0"
+                        max="100"
+                        step="1"
+                        value="80"
+                        aria-label="Volume"
+                    />
+                </div>
+
+                <p
+                    class="status"
+                    id="status"
+                    role="status"
+                    aria-live="polite"
+                ></p>
+            </section>
+
+            <!-- stations -->
+            <ul class="stations" id="stations" aria-label="Stations"></ul>
+            <p class="note">
+                Streams by ORF · works offline as an installed app · tap ★ for
+                favourites
+            </p>
+        </main>
+
+        <div class="offline" id="offlineBanner" hidden>
+            Offline — streams need a connection.
         </div>
-        <h1 id="npName">Radio Niederösterreich</h1>
-      </div>
-      <div class="eq" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-    </div>
-
-    <div class="controls">
-      <button class="icon-btn" id="prevBtn" aria-label="Previous station">
-        <svg viewBox="0 0 24 24"><path d="M18 6 9 12l9 6V6Z"/><path d="M6 6v12"/></svg>
-      </button>
-      <button class="play" id="playBtn" aria-label="Play">
-        <svg class="i-play" viewBox="0 0 24 24"><path d="M8 5.5v13l11-6.5-11-6.5Z"/></svg>
-        <svg class="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg>
-        <svg class="i-spin" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"/></svg>
-      </button>
-      <button class="icon-btn" id="nextBtn" aria-label="Next station">
-        <svg viewBox="0 0 24 24"><path d="m6 6 9 6-9 6V6Z"/><path d="M18 6v12"/></svg>
-      </button>
-    </div>
-
-    <div class="vol-row">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/></svg>
-      <input type="range" id="vol" min="0" max="100" step="1" value="80" aria-label="Volume">
-    </div>
-
-    <p class="status" id="status" role="status" aria-live="polite"></p>
-  </section>
-
-  <!-- stations -->
-  <ul class="stations" id="stations" aria-label="Stations"></ul>
-  <p class="note">Streams by ORF · works offline as an installed app · tap ★ for favourites</p>
-</main>
-
-<div class="offline" id="offlineBanner" hidden>Offline — streams need a connection.</div>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<audio id="audio" preload="none"></audio>
-<script src="app.js"></script>
-</body>
+        <div class="toast" id="toast" role="status" aria-live="polite"></div>
+        <audio id="audio" preload="none"></audio>
+        <script src="app.js"></script>
+    </body>
 </html>
